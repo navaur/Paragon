@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="files/css/fitnesse.css" rel="stylesheet" type="text/css" />
+    <title></title>
+</head>
+<body>
+<table BORDER CELLSPACING=0 CELLPADDING=3>
+    <tr><td ColSpan=3>WineOrders</a> </td></tr>
+    <tr><td> start </td><td>
+
+        SearchWines
+    </td><td>&nbsp;</td></tr>
+    <tr><td> enter </td><td> search </td><td> Argentina </td></tr>
+    <tr><td> check </td><td> total wines </td><td> 8 </td></tr>
+</table>
+<p> Wine - Total Price</p>
+<table BORDER CELLSPACING=0 CELLPADDING=3>
+    <tr><td ColSpan=6>WineOrders</a> </td></tr>
+
+
+    <tr><td> enter </td><td> select</td><td> 1 </td><td>Select first wine from the list</td></tr>
+    <tr><td> enter </td><td> time </td><td> 2 </td> <td> Delay after the offer time (Minutes)</td></tr>
+    <tr><td> display </td><td> name </td><td>  </td><td> Wine Name</td></tr>
+    <tr><td> display </td><td> price </td><td>  </td><td> Total Price of Wine</td></tr>
+    <tr><td> check </td><td> processing</td><td>0  </td><td> Processing Charges</td></tr>
+
+    <tr><td> enter </td><td> chooseTotalPriceHigher </td><td> 200 </td><td>Choose wine with total price higer than 200</td></tr>
+    <tr><td> enter </td><td> time </td><td> 9 </td> <td> Delay after the offer time (Minutes)</td></tr>
+    <tr><td> display </td><td> name  </td><td>  </td><td> Wine Name</td></tr>
+    <tr><td> display </td><td> price </td><td>  </td><td> Total Price of Wine</td></tr>
+    <tr><td> check </td><td> processing</td><td> 10 </td><td> Processing Charges</td></tr>
+
+    <tr><td> enter </td><td> chooseTotalPriceLower </td><td> 200 </td><td>Choose wine with total price less than 200</td></tr>
+    <tr><td> enter </td><td> time </td><td> 9 </td> <td> Delay after the offer time (Minutes)</td></tr>
+    <tr><td> display </td><td> name  </td><td>  </td><td> Wine Name</td></tr>
+    <tr><td> display </td><td> price </td><td>  </td><td> Total Price of Wine</td></tr>
+    <tr><td> check </td><td> processingPercent</td><td> 5% </td><td> Processing Charges (% of total)</td></tr>
+
+    <tr><td> enter </td><td> select</td><td> 4 </td><td>Select second wine from the list</td></tr>
+    <tr><td> enter </td><td> time </td><td> 15 </td> <td> Delay after the offer time (Minutes)</td></tr>
+    <tr><td> display </td><td> name  </td><td>  </td><td> Wine Name</td></tr>
+    <tr><td> display </td><td> price </td><td>  </td><td> Total Price of Wine</td></tr>
+    <tr><td> check </td><td> processing</td><td> 20 </td><td> Processing Charges</td></tr>
+
+    <tr><td> enter </td><td> select</td><td> 5 </td><td>Select second wine from the list</td></tr>
+    <tr><td> enter </td><td> time </td><td> 21 </td> <td> Delay after the offer time (Minutes)</td></tr>
+    <tr><td> display </td><td> name  </td><td>  </td><td> Wine Name</td></tr>
+    <tr><td> display </td><td> price </td><td>  </td><td> Total Price of Wine</td></tr>
+    <tr><td> check </td><td> processing</td><td> error </td><td> Processing Charges</td></tr>
+
+
+
+</table>
+</body>
+</html>

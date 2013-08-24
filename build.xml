@@ -1,0 +1,53 @@
+<project name="Paragon" default="full-build">
+<!--	<property name="product" value="shopping" />    -->
+
+	<path id="compile.classpath.paragon">
+        <fileset dir="lib" />
+	</path>
+
+	<path id="compile.classpath.acceptance-tests">
+		<fileset dir="lib/fit" />
+        <fileset dir="lib" />
+		<pathelement location="build/paragon.jar" />
+	</path>
+
+	<path id="run.classpath.acceptance-tests">
+		<pathelement location="build/acceptance-tests.jar" />
+		<path refid="compile.classpath.acceptance-tests" />
+	</path>
+    
+	<target name="full-build" description="Builds everything from scratch" depends="clean, test" />
+    
+	<target name="clean" description="Removes all build artefacts">
+		<delete dir="build" />
+		<delete dir="reports" />
+	</target>
+
+	<target name="test" depends="jars">
+		<java classname="fitlibrary.runner.FolderRunner" classpathref="run.classpath.acceptance-tests"  error="c:\\test.txt">
+			<arg value="fit" />
+			<arg value="reports" />
+		</java>
+	</target>
+
+    <target name="jars">
+        <compile-module   out="paragon" src="src"  />
+        <compile-module out="acceptance-tests" src="acceptance-tests" />
+    </target>
+	
+	<macrodef name="compile-module">
+		<attribute name="out" />
+        <attribute name="src" />
+
+		<sequential>
+			<mkdir dir="build/classes/@{out}" />
+
+			<javac srcdir="@{src}" destdir="build/classes/@{out}" debug="true" classpathref="compile.classpath.@{out}" />
+
+			<jar jarfile="build/@{out}.jar">
+				<fileset dir="build/classes/@{out}" />
+
+			</jar>
+		</sequential>
+	</macrodef>
+</project>
