@@ -1,5 +1,7 @@
 <project name="Paragon" default="full-build">
-<!--	<property name="product" value="shopping" />    -->
+
+    <property name="junit.output.dir" value="reports"/>
+    <property name="junit.src.dir" value="test"/>
 
 	<path id="compile.classpath.paragon">
         <fileset dir="lib" />
@@ -11,7 +13,18 @@
 		<pathelement location="build/paragon.jar" />
 	</path>
 
-	<path id="run.classpath.acceptance-tests">
+    <path id="compile.classpath.JUnit">
+        <fileset dir="lib" />
+         <pathelement location="build/paragon.jar" />
+    </path>
+
+    <path id="run.classpath.JUnit">
+        <pathelement location="build/JUnit.jar" />
+        <path refid="compile.classpath.JUnit" />
+    </path>
+
+
+    <path id="run.classpath.acceptance-tests">
 		<pathelement location="build/acceptance-tests.jar" />
 		<path refid="compile.classpath.acceptance-tests" />
 	</path>
@@ -33,6 +46,7 @@
     <target name="jars">
         <compile-module   out="paragon" src="src"  />
         <compile-module out="acceptance-tests" src="acceptance-tests" />
+        <compile-module out="JUnit" src="test" />
     </target>
 	
 	<macrodef name="compile-module">
@@ -50,4 +64,28 @@
 			</jar>
 		</sequential>
 	</macrodef>
+    <target name="junit-test" depends="jars">
+        <junit printsummary="true" haltonfailure="false">
+            <formatter type="xml" usefile="true"/>
+            <classpath refid="run.classpath.JUnit" />
+            <test name="com.paragon.TestOrderSystem" haltonfailure="no" todir="${junit.output.dir}">
+                <formatter type="xml"/>
+            </test>
+
+
+        </junit>
+    </target>
+
+    <target name="test-reports" depends="junit-test">
+        <mkdir dir="${basedir}/${junit.output.dir}" />
+        <mkdir dir="${junit.output.dir}/junit"/>
+        <junitreport tofile="TESTS-TestSuites.xml" todir="${junit.output.dir}/junit">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml" />
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}/reports" />
+        </junitreport>
+    </target>
 </project>
+
+
