@@ -41,7 +41,7 @@ public class SearchWines extends Fixture {
             }
         }
         if (selectedId == null){
-                throw  new Exception("No Suck Quote")      ;
+                throw  new Exception("No Such Quote")      ;
 
         }
         Quote quote= WineCollection.quotes.get(selectedId);
@@ -59,7 +59,7 @@ public class SearchWines extends Fixture {
             }
         }
         if (selectedId == null){
-            throw  new Exception("No Suck Quote");
+            throw  new Exception("No Such Quote");
 
         }
         Quote quote= WineCollection.quotes.get(selectedId);
