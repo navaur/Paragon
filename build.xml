@@ -29,14 +29,14 @@
 		<path refid="compile.classpath.acceptance-tests" />
 	</path>
     
-	<target name="full-build" description="Builds everything from scratch" depends="clean, test" />
+	<target name="full-build" description="Builds everything from scratch" depends="clean, fittest,test-reports" />
     
 	<target name="clean" description="Removes all build artefacts">
 		<delete dir="build" />
 		<delete dir="reports" />
 	</target>
 
-	<target name="test" depends="jars">
+	<target name="fittest" depends="jars">
 		<java classname="fitlibrary.runner.FolderRunner" classpathref="run.classpath.acceptance-tests"  error="c:\\test.txt">
 			<arg value="fit" />
 			<arg value="reports" />
